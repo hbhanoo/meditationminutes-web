@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meditation Minutes</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <style>
+    body {
+			font-family: Verdana, sans-serif;
+      padding:0;
+      margin: 0;
+			color: #222;
+			background-image:none;
+    }
+		.container {
+			margin: auto;
+			padding: 0 50px 0 50px;
+			max-width: 400px;
+			min-width: 250px;
+		}
+		.splash {
+			border-radius: 1em;
+			height:300px;
+			background-size:cover;
+			background-image: url(background-400x300.jpg);
+			background-repeat: no-repeat;
+		}
+		.teaching {
+			/* common */
+			text-align: left;
+			/* low res only */
+			color: #555;
+			font-size: 16px;
+		}
+		
+    .header {
+      width:100%;
+    }
+    h1 {
+			font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+			font-weight: 200;
+			font-size: 22px;
+			color:#000;
+    }
+		a, a:visited, a:active {
+			color: #000;
+			font-weight: 200;
+			text-decoration: none;
+		}
+		ul {
+			list-style: none;
+		}
+		#invisiblehd {
+			background-image: url(background-400x300.jpg);
+			display:none;
+		}
+		@media screen and (min-width: 700px) {
+			body {
+				background-image: url(background-400x300.jpg);
+				background-size:cover;
+				background-attachment: fixed;
+				background-repeat: no-repeat;
+			}
+			.splash {
+				background-image: none;
+				display:none;
+			}
+			h1 {
+				font-size: 32px;
+			}
+			#invisiblehd {
+				background-image: url(background.jpg);
+			}
+			.container {
+				margin: 50px;
+			}
+			.teaching {
+				position: absolute;
+				right:50px;
+				width: 30em;
+				border-radius: 1em;
+				background: rgba(24,24,24,0.6);
+				color: #aaa;
+				font-size: 14px;
+				text-align: justify;
+				text-justify: distribute;
+				padding: 1em;
+			}
+			a, a:visited, a:active {
+				color: #fff;
+				font-weight: 200;
+				text-decoration: none;
+			}
+		}
+    </style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </head>
+	<html>
+		<body class="image">
+			<div class="container">
+				<h1>meditation minutes</h1>
+				<div class="splash image"> </div>
+				<div class="teaching">
+					<p/>I teach <a href="https://siyli.org/">
+						Search Inside Yourself</a>, a mindfulness-based
+					emotional-intelligence and leadership course developed at Google.
+					<p/>I taught SIY to over 200 of my coworkers while I was an engineer
+					at Google - in Mountain View, Tokyo, London, and Dublin.
+					<p/>Teaching mindfulness is a hobby and a passion. Since leaving Google I
+					have continued to teach executives across a variety of industries including
+					consulting, retail, and manufacturing.
+					<a href="mailto:hemant@meditationminutes.net">Email me</a> if you think I'd
+					be a good fit to bring this content to your organization.
+					<p/>I <a href="http://blog.meditationminutes.net">
+						write</a> often about meditation and I occasionally make
+					<a href="https://www.youtube.com/channel/UCEj1aX-5O7Ug8d2rf6dSNMg">videos</a>
+					when I have some extra time. Aside from teaching, I'm an entrepreneur, investor,
+					and engineer. You can find out more about me on
+					<a href="https://www.linkedin.com/in/hemantbhanoo" >linkedin</a>.
+				</div>
+				<img id="invisiblehd"></img>
+				<script>
+				var setimage = function() {
+					var altimage = $("#invisiblehd").css("background-image");
+					$(".image").each(function() {
+						if ($(this).css("background-repeat") == "no-repeat") {
+							$(this).css({"background-image" : altimage});
+						} else {
+							$(this).css({"background-image" : "none"});
+						}
+					});
+				};
+				$("<img>").load(function() {
+					$(window).resize(setimage);
+					setimage();
+				}).attr('src', function() {
+					var imgurl = $("#invisiblehd").css('background-image');
+					console.log("imgurl [" + imgurl + ']');
+					imgurl = imgurl.substring(4, imgurl.length - 1);
+					if(imgurl[0] == '"' && imgurl[imgurl.length - 1] == '"') {
+						imgurl = imgurl.substring(1, imgurl.length - 1);
+					}
+					console.log("imgurl [" + imgurl + ']');
+					return imgurl;
+				});
+				</script>
+		</body>
+	</html>
